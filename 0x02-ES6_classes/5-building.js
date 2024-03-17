@@ -1,4 +1,3 @@
-/* eslint-disable no-throw-literal */
 /* eslint-disable class-methods-use-this */
 
 export default class Building {
@@ -10,7 +9,7 @@ export default class Building {
 
   static verifyIsNumber(attribute, attributeName) {
     if (typeof (attribute) !== 'number') {
-      throw (`TypeError: ${attributeName} must be a number`);
+      throw new Error(`TypeError: ${attributeName} must be a number`);
     }
   }
 
@@ -27,7 +26,7 @@ export default class Building {
 
   static ensureMethodIsOverridden() {
     if (!Object.hasOwn(this.prototype, 'evacuationWarningMessage')) {
-      throw ('Error: Class extending Building must override evacuationWarningMessage');
+      throw new Error('Class extending Building must override evacuationWarningMessage');
     }
   }
 }
