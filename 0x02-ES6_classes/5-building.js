@@ -4,7 +4,9 @@ export default class Building {
   constructor(sqft) {
     Building.verifyIsNumber(sqft, 'Square feet');
     this._sqft = sqft;
-    this.constructor.ensureMethodIsOverridden();
+    if (this.constructor !== Building && this.evacuationWarningMessage === undefined) {
+      throw new Error('Class extending Building must override evacuationWarningMessage');
+    }
   }
 
   static verifyIsNumber(attribute, attributeName) {
@@ -15,18 +17,5 @@ export default class Building {
 
   get sqft() {
     return this._sqft;
-  }
-
-  set sqft(sqft) {
-    Building.verifyIsNumber(sqft, 'Square feet');
-    this._sqft = sqft;
-  }
-
-  evacuationWarningMessage() {}
-
-  static ensureMethodIsOverridden() {
-    if (!Object.hasOwn(this.prototype, 'evacuationWarningMessage')) {
-      throw new Error('Class extending Building must override evacuationWarningMessage');
-    }
   }
 }

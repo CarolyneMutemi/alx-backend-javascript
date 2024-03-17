@@ -4,3 +4,4 @@ const building = new SkyHighBuilding(140, 60);
 console.log(building.sqft);
 console.log(building.floors);
 console.log(building.evacuationWarningMessage());
+console.log(typeof building.evacuationWarningMessage)

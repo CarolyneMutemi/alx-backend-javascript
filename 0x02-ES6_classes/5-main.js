@@ -6,7 +6,7 @@ console.log(b.sqft);
 class TestBuilding extends Building {}
 
 try {
-    new TestBuilding(200)
+    const test = new TestBuilding(200)
 }
 catch(err) {
     console.log(err);
