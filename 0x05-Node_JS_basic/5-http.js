@@ -44,8 +44,9 @@ const app = createServer((req, res) => {
     res.statusCode = 200;
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
+    res.write('This is the list of our students\n');
     readDatabase(filePath).then((message) => {
-      const displayText = `This is the list of our students\n${message.trim()}`;
+      const displayText = message.trim();
       res.statusCode = 200;
       res.end(displayText);
     })

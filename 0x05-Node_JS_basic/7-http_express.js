@@ -44,7 +44,7 @@ app.get('/students', (req, res) => {
   readDatabase(filePath).then((text) => {
     res.send(`This is the list of our students\n${text.trim()}`);
   })
-    .catch((error) => res.send(error.message));
+    .catch((error) => res.send(`This is the list of our students\n${error.message}`));
 });
 
 app.listen(1245);
