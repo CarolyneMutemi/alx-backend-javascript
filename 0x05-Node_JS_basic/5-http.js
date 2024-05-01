@@ -39,6 +39,7 @@ async function readDatabase(path) {
 }
 
 const app = createServer((req, res) => {
+  res.setHeader('Content-Type', 'text/plain');
   if (req.url === '/') {
     res.statusCode = 200;
     res.end('Hello Holberton School!');
