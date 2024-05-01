@@ -1,8 +1,9 @@
 /* eslint-disable guard-for-in */
-const { createServer } = require('http');
+const express = require('express');
 const { readFile } = require('fs').promises;
 const process = require('process');
 
+const app = express();
 if (process.argv.length < 3) {
   console.log('Usage: node 5-http <file path>');
   process.exit(1);
@@ -38,24 +39,12 @@ async function readDatabase(path) {
   }
 }
 
-const app = createServer((req, res) => {
-  res.setHeader('Content-Type', 'text/plain');
-  if (req.url === '/') {
-    res.statusCode = 200;
-    res.end('Hello Holberton School!');
-  } else if (req.url === '/students') {
-    readDatabase(filePath).then((message) => {
-      const displayText = `This is the list of our students\n${message.trim()}`;
-      res.statusCode = 200;
-      res.end(displayText);
-    })
-      .catch((error) => {
-        res.end(error.message);
-      });
-  } else {
-    res.statusCode = 404;
-    res.end('Not found :(');
-  }
+app.get('/', (req, res) => res.send('Hello Holberton School!'));
+app.get('/students', (req, res) => {
+  readDatabase(filePath).then((text) => {
+    res.send(`This is the list of our students\n${text.trim()}`);
+  })
+    .catch((error) => res.send(error.message));
 });
 
 app.listen(1245);
