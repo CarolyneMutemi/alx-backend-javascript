@@ -1,6 +1,6 @@
 /* eslint-disable guard-for-in */
-import readDatabase from '../utils';
 import process from 'process';
+import readDatabase from '../utils';
 
 if (process.argv.length !== 3) {
   console.log('Please pass in the database file path.');
