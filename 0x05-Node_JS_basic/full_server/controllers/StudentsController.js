@@ -1,11 +1,5 @@
 /* eslint-disable guard-for-in */
 import process from 'process';
-import readDatabase from '../utils';
-
-if (process.argv.length !== 3) {
-  console.log('Please pass in the database file path.');
-  process.exit(1);
-}
 
 const filePath = process.argv[2];
 
