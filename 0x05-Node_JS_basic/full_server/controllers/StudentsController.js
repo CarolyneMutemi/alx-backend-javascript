@@ -1,7 +1,8 @@
 /* eslint-disable guard-for-in */
 import process from 'process';
+import readDatabase from '../utils';
 
-const filePath = process.argv[2];
+const filePath = (process.argv.length < 3) ? null: process.argv[2];
 
 export default class StudentsController {
   static async getAllStudents(req, res) {
