@@ -12,7 +12,7 @@ export default class StudentsController {
         const studentsInField = dataObject[field];
         responseText += `Number of students in ${field}: ${studentsInField.length}. List: ${studentsInField.join(', ')}\n`;
       }
-      res.send(responseText.trim());
+      res.status(200).send(responseText.trim());
     }).catch((error) => {
       res.status(500).send(error.message);
     });
@@ -25,7 +25,7 @@ export default class StudentsController {
     } else {
       await readDatabase(filePath).then((dataObject) => {
         const responseText = `List: ${dataObject[major].join(', ')}`;
-        res.send(responseText);
+        res.status(200).send(responseText);
       })
         .catch((error) => {
           res.status(500).send(error.message);
