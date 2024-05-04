@@ -3,9 +3,9 @@
 
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import filePath from './full_server/controllers/StudentsController.js'
+//import {filePath} from './full_server/controllers/StudentsController.js'
 
-process.argv[2] = './database.csv'
+process.argv[2] = './databaseqwe.csv'
 
 import app from './full_server/server.js';
 
@@ -22,10 +22,10 @@ describe('Full HTTP server using Express', () => {
 
       it('Returns the right content', (done) => {
         chai.request(app)
-          .get('/students/SWE')
+          .get('/students')
           .end((error, response) => {
             //chai.expect(response.statusCode).to.equal(200);
-            chai.expect(response.text).to.equal(`List: Guillaume, Joseph, Paul, Tommy`);
+            chai.expect(response.text).to.equal(`Cannot load the database`);
             done();
 
           });
