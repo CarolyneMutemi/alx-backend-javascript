@@ -19,7 +19,7 @@ async function readDatabase(path) {
     }
     return dataObject;
   } catch (error) {
-    throw new Error('Cannot load the database');
+    throw new Error(error);
   }
 }
 
