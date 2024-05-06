@@ -9,5 +9,6 @@ describe("sendPaymentRequestToApi tests", function(){
         sendPaymentRequestToApi(3, 4)
         sinon.assert.calledOnce(calcSpy)
         expect(calcSpy.calledWith('SUM', 3, 4)).to.be.true
+        calcSpy.restore()
     })
 })
